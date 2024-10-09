@@ -1,6 +1,7 @@
 /* Garantir que o body ocupe toda a altura da tela */
-body, html {
+.main-content {
     margin: 0;
+    margin-top: 3.6%;
     padding: 0;
     height: 85%;
     display: flex;
@@ -20,7 +21,7 @@ body, html {
   
   /* Estilos do campo de input */
   .search-city {
-    width: 25vw;
+    width: 30vw;
     height: 5.75vh;
     font-size: 18.75px;
     letter-spacing: 0.50px;
