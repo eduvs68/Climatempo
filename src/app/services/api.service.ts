@@ -1,15 +1,26 @@
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = '/api/v1/anl/synoptic/locale/:BR?token=f93a6e1551282a41d16ec3eea06bb9bc';
-  private apiTemperature = '/api/v1/climate/temperature/locale/:id?token=f93a6e1551282a41d16ec3eea06bb9bc'
+  private apiUrl = 'https://api.open-meteo.com/v1/forecast';
 
-private http = inject(provideHttpClient);
+  private http = inject(provideHttpClient);
+
+  constructor (private httpClient: HttpClient){}
+
+  public getWeather (latitude: number, longitude: number): Observable<any> {
+    const params = {
+      latitude: latitude.toString(),
+      longitude: longitude.toString(),
+      hourly: 'temperature_2m',
+    }
+    return this.httpClient.get<any>(this.apiUrl,  { params })
+
+  }
 
 
 }
-

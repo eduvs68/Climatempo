@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { Meteo } from '../models/meteo';
 
 @Component({
   selector: 'app-user-input',
@@ -9,5 +11,14 @@ import { Component, Input } from '@angular/core';
 })
 export class UserInputComponent {
 
+  private meteo: Meteo | undefined;
 
+
+  constructor (private apiService: ApiService){}
+
+  public getWeather (this.meteo){
+    this.apiService.getWeather(meteo.latitude, meteo.longitude).subscribe((data) => {
+      
+    })
+  }
 }
