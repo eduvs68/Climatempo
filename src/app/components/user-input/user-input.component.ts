@@ -12,11 +12,12 @@ import { ApiService } from '../../services/api.service';
 })
 export class UserInputComponent {
 
-  @Input() userInput?: string;
-
-  private service = Inject(ApiService);
-
+  @Input() userInput: string ='';
+  
   public meteoInstance: Meteo = {};
+  
+  constructor (private service: ApiService){}
+
 
 public getPlaceLocation(): void {
   this.service.getPlaceLocation(this.userInput).subscribe({
