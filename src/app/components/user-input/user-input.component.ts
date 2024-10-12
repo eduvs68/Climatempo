@@ -1,6 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Meteo } from '../../models/meteo';
+import { WeatherData } from '../../models/weather-data';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -14,23 +14,24 @@ export class UserInputComponent {
 
   @Input() userInput: string ='';
   
-  public meteoInstance: Meteo = {};
+  weatherData: WeatherData = {};
   
   constructor (private service: ApiService){}
 
 
-public getPlaceLocation(): void {
-  this.service.getPlaceLocation(this.userInput).subscribe({
-    next: (meteo: Meteo) => {
-      // this.meteoInstance.latitude = meteo.latitude;
-      // this.meteoInstance.longitude = meteo.longitude;
-      // this.meteoInstance.elevation = meteo.elevation;
-      // this.meteoInstance.timezone = meteo.timezone;
-      // this.meteoInstance.timezone_abbreviation = meteo.timezone_abbreviation;
-       this.meteoInstance.hourly = meteo.hourly;
-       this.meteoInstance.hourly_units = meteo.hourly_units;
+public getClimateByGeometry(): void {
+  this.service.getClimateByGeometry(this.userInput).subscribe({
+    next: (weather: WeatherData) => {
+      // this.weatherData.latitude = weather.latitude;
+      // this.weatherData.longitude = weather.longitude;
+      // this.weatherData.elevation = weather.elevation;
+      // this.weatherData.timezone = weather.timezone;
+      // this.weatherData.timezone_abbreviation = weather.timezone_abbreviation;
+       this.weatherData.hourly = weather.hourly;
+       this.weatherData.hourly_units = weather.hourly_units;
     },
   });
+  console.log(this.weatherData);
 }
 
 }

@@ -1,6 +1,6 @@
 import { Hourly } from "./hourly"
 
-export interface Meteo{
+export interface WeatherData{
     latitude?: number,
     longitude?: number,
     elevation?: number,
