@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-show-results',
+  selector: 'show-results',
   standalone: true,
   imports: [],
   templateUrl: './show-results.component.html',

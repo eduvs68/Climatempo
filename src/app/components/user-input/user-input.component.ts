@@ -4,7 +4,7 @@ import { WeatherData } from '../../models/weather-data';
 import { ApiService } from '../../services/api.service';
 
 @Component({
-  selector: 'app-user-input',
+  selector: 'user-input',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './user-input.component.html',
